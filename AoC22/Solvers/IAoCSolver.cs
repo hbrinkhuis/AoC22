@@ -2,5 +2,5 @@
 
 public interface IAoCSolver
 {
-    public string Solve(string input);
+    public string SolvePartOne(string input);
 }

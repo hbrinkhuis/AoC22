@@ -2,10 +2,10 @@
 
 public class DayOneSolver : IAoCSolver
 {
-    public string Solve(string input)
+    public string SolvePartOne(string input)
     {
         if (string.IsNullOrWhiteSpace(input))
-            throw new ArgumentNullException();
+            throw new ArgumentNullException(nameof(input));
         return string.Empty;
     }
 }
