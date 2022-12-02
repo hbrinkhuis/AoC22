@@ -11,20 +11,37 @@ public class DayOneSolver : IAoCSolver
             CaloricValue = 0;
         }
     }
-    public string SolvePartOne(IEnumerable<string> input)
+    public string SolvePartOne(string[] input)
     {
-        if (input == null || !input.Any())
-            throw new ArgumentNullException(nameof(input));
+        var elves = ParseElves(input);
 
+        var maxCaloricValue = elves.MaxBy(c => c.CaloricValue).CaloricValue;
+
+        return maxCaloricValue.ToString();
+    }
+
+    public string SolvePartTwo(string[] input)
+    {
+        var elves = ParseElves(input);
+
+        var topThree = elves.OrderByDescending(c => c.CaloricValue).Take(3);
+        return topThree.Sum(c => c.CaloricValue).ToString();
+    }
+    
+    private static IEnumerable<Elve> ParseElves(string[] input)
+    {
+        var lines = input.ToList();
+        if (input == null || !lines.Any())
+            throw new ArgumentNullException(nameof(input));
+        
         var elves = new List<Elve>();
         var currentElve = new Elve();
-        foreach (var line in input)
+        foreach (var line in lines)
         {
             if (string.IsNullOrEmpty(line))
             {
                 elves.Add(currentElve);
                 currentElve = new Elve();
-                
             }
             else
             {
@@ -34,9 +51,10 @@ public class DayOneSolver : IAoCSolver
                 }
             }
         }
+        
+        // add last Elve
+        elves.Add(currentElve);
 
-        var maxCaloricValue = elves.MaxBy(c => c.CaloricValue).CaloricValue;
-
-        return maxCaloricValue.ToString();
+        return elves;
     }
 }

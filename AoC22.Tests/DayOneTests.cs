@@ -19,6 +19,8 @@ public class DayOneTests
 
 10000";
 
+    private const string SampleExpected = "24000";
+
     private readonly IAoCSolver _sut;
 
     public DayOneTests()
@@ -37,19 +39,57 @@ public class DayOneTests
     [Fact]
     public void DayOneTest_PartOneSampleInput_ShouldReturnAnswer()
     {
-        const string expected = "24000";
-        using var sr = new StringReader(SampleInput);
+        using var tr = new StringReader(SampleInput);
+        var lines = GetLinesFromReader(tr);
 
+        var result = _sut.SolvePartOne(lines);
+
+        result.Should().Be(SampleExpected);
+    }
+
+    [Fact]
+    public void DayOneTest_PartOneFileInput_ShouldReturnAnswer()
+    {
+        using var sr = new StreamReader("./inputs/dayone.txt");
+        var lines = GetLinesFromReader(sr);
+        
+        var result = _sut.SolvePartOne(lines);
+
+        result.Should().Be("73211");
+    }
+
+    [Fact]
+    public void DayOneTest_PartTwoSampleInput_ShouldReturnAnswer()
+    {
+        using var tr = new StringReader(SampleInput);
+        var lines = GetLinesFromReader(tr);
+
+        var result = _sut.SolvePartTwo(lines);
+
+        result.Should().Be("45000");
+    }
+    
+    [Fact]
+    public void DayOneTest_PartTwoFileInput_ShouldReturnAnswer()
+    {
+        using var tr = new StreamReader("./inputs/dayone.txt");
+        var lines = GetLinesFromReader(tr);
+
+        var result = _sut.SolvePartTwo(lines);
+
+        result.Should().Be("213958");
+    }
+    
+    private static string[] GetLinesFromReader(TextReader tr)
+    {
         var lines = new List<string>();
         string? line = string.Empty;
         while (line != null)
         {
             lines.Add(line);
-            line = sr.ReadLine();
+            line = tr.ReadLine();
         }
-        
-        var result = _sut.SolvePartOne(lines.ToArray()[1..]);
 
-        result.Should().Be(expected);
+        return lines.ToArray()[1..];
     }
 }

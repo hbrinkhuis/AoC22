@@ -26,4 +26,10 @@
       <ProjectReference Include="..\AoC22\AoC22.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="inputs\dayone.txt">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
