@@ -29,7 +29,7 @@ public class DayOneTests
     [Fact]
     public void DayOneTest_NoInput_ShouldThrowArgumentNullException()
     {
-         var action = () => _sut.SolvePartOne(string.Empty);
+         var action = () => _sut.SolvePartOne(Array.Empty<string>());
 
          action.Should().Throw<ArgumentNullException>();
     }
@@ -38,8 +38,17 @@ public class DayOneTests
     public void DayOneTest_PartOneSampleInput_ShouldReturnAnswer()
     {
         const string expected = "24000";
+        using var sr = new StringReader(SampleInput);
 
-        var result = _sut.SolvePartOne(SampleInput);
+        var lines = new List<string>();
+        string? line = string.Empty;
+        while (line != null)
+        {
+            lines.Add(line);
+            line = sr.ReadLine();
+        }
+        
+        var result = _sut.SolvePartOne(lines.ToArray()[1..]);
 
         result.Should().Be(expected);
     }
