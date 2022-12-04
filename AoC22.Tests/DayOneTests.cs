@@ -40,7 +40,7 @@ public class DayOneTests
     public void DayOneTest_PartOneSampleInput_ShouldReturnAnswer()
     {
         using var tr = new StringReader(SampleInput);
-        var lines = GetLinesFromReader(tr);
+        var lines = tr.GetLinesFromReader();
 
         var result = _sut.SolvePartOne(lines);
 
@@ -51,7 +51,7 @@ public class DayOneTests
     public void DayOneTest_PartOneFileInput_ShouldReturnAnswer()
     {
         using var sr = new StreamReader("./inputs/dayone.txt");
-        var lines = GetLinesFromReader(sr);
+        var lines = sr.GetLinesFromReader();
         
         var result = _sut.SolvePartOne(lines);
 
@@ -62,7 +62,7 @@ public class DayOneTests
     public void DayOneTest_PartTwoSampleInput_ShouldReturnAnswer()
     {
         using var tr = new StringReader(SampleInput);
-        var lines = GetLinesFromReader(tr);
+        var lines = tr.GetLinesFromReader();
 
         var result = _sut.SolvePartTwo(lines);
 
@@ -73,23 +73,10 @@ public class DayOneTests
     public void DayOneTest_PartTwoFileInput_ShouldReturnAnswer()
     {
         using var tr = new StreamReader("./inputs/dayone.txt");
-        var lines = GetLinesFromReader(tr);
+        var lines = tr.GetLinesFromReader();
 
         var result = _sut.SolvePartTwo(lines);
 
         result.Should().Be("213958");
-    }
-    
-    private static string[] GetLinesFromReader(TextReader tr)
-    {
-        var lines = new List<string>();
-        string? line = string.Empty;
-        while (line != null)
-        {
-            lines.Add(line);
-            line = tr.ReadLine();
-        }
-
-        return lines.ToArray()[1..];
     }
 }
