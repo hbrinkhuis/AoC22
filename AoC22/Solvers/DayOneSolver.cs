@@ -28,7 +28,7 @@ public class DayOneSolver : IAoCSolver
         return topThree.Sum(c => c.CaloricValue).ToString();
     }
     
-    private static IEnumerable<Elve> ParseElves(string[] input)
+    private static IEnumerable<Elve> ParseElves(IEnumerable<string> input)
     {
         var lines = input.ToList();
 
