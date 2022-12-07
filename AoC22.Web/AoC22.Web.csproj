@@ -6,4 +6,12 @@
         <ImplicitUsings>enable</ImplicitUsings>
     </PropertyGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="Pages\Days\One.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\AoC22\AoC22.csproj" />
+    </ItemGroup>
+
 </Project>

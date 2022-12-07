@@ -1,0 +1,71 @@
+﻿@page "/solver"
+@using AoC22.Solvers
+
+@inject IWebHostEnvironment Environment
+<PageTitle>AoC 2022 solver</PageTitle>
+
+<h3>Solver</h3>
+
+<form>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="Day" class="form-label">Day</label>
+                <select for="Day" class="form-control" @bind="_selectedSolver">
+                    <option value="0" disabled selected hidden>Select day</option>
+                    @foreach (var solver in _solvers)
+                    {
+                        <option value="@solver.Id">@solver.DisplayName</option>    
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputfile">Input File</label>
+                <InputFile OnChange="@LoadInput"></InputFile>
+                @if (_fileName != string.Empty)
+                {
+                    <p>Uploaded tot @_fileName</p>
+                }
+            </div>
+        </div>    
+    </div>
+</form>
+
+@code {
+    readonly List<AocSolver> _solvers = new();
+
+    int _selectedSolver = 0;
+    
+    string _fileName = string.Empty;
+    
+    private class AocSolver
+    {
+        public int Id { get; init; }
+        
+        public string DisplayName { get; init; }
+    }
+
+    protected override void OnInitialized()
+    {
+        // generate solver items
+        foreach (var id in Enumerable.Range(1, 25))
+        {
+            _solvers.Add(new AocSolver { Id = id, DisplayName = $"Day {id}"});
+        }
+    }
+
+    private async void LoadInput(InputFileChangeEventArgs e)
+    {
+        var trustedFileNameForFileStorage = Path.GetRandomFileName();
+        var path = Path.Combine(Environment.ContentRootPath,
+            Environment.EnvironmentName, "unsafe_uploads",
+            trustedFileNameForFileStorage);
+        
+        await using var fs = new FileStream(path, FileMode.Create);
+        
+        await e.File.OpenReadStream().CopyToAsync(fs);
+
+        _fileName = path;
+    }
+
+}
