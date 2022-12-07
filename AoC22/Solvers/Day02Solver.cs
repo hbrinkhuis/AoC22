@@ -1,6 +1,6 @@
 ﻿namespace AoC22.Solvers;
 
-public class DayTwoSolver : IAoCSolver
+public class Day02Solver : IAoCSolver
 {
     public string SolvePartOne(string[] input)
     {

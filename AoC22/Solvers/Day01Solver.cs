@@ -1,6 +1,6 @@
 ﻿namespace AoC22.Solvers;
 
-public class DayOneSolver : IAoCSolver
+public class Day01Solver : IAoCSolver
 {
     private struct Elve
     {

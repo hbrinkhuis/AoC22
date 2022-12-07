@@ -8,7 +8,8 @@ internal class FileInputData : TheoryData<IAoCSolver, string, string, string>
     
     public FileInputData()
     {
-        Add(new DayOneSolver(), $"{BasePath}dayone.txt", "73211", "213958");
-        Add(new DayTwoSolver(), $"{BasePath}daytwo.txt", "14531", "11258");
+        Add(new Day01Solver(), $"{BasePath}day01.txt", "73211", "213958");
+        Add(new Day02Solver(), $"{BasePath}day02.txt", "14531", "11258");
+        Add(new Day03Solver(), $"{BasePath}day03.txt", "", "");
     }
 }
