@@ -10,6 +10,6 @@ internal class FileInputData : TheoryData<IAoCSolver, string, string, string>
     {
         Add(new Day01Solver(), $"{BasePath}day01.txt", "73211", "213958");
         Add(new Day02Solver(), $"{BasePath}day02.txt", "14531", "11258");
-        Add(new Day03Solver(), $"{BasePath}day03.txt", "7821", "");
+        Add(new Day03Solver(), $"{BasePath}day03.txt", "7821", "2752");
     }
 }

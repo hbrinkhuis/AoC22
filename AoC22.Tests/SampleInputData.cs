@@ -14,6 +14,6 @@ internal class SampleInputData : TheoryData<IAoCSolver, string, string, string>
         Add(new Day03Solver(), 
             "vJrwpWtwJgWrhcsFMMfFFhFp\njqHRNqRjqzjGDLGLrsFMfFZSrLrFZsSL\nPmmdzqPrVvPwwTWBwg\n" +
             "wMqvLMZHhHMvwLHjbvcjnnSBnvTQFn\nttgJtRGJQctTZtZT\nCrZsJsPPZsGzwwsLwLmpwMDw",
-            "157", string.Empty);
+            "157", "70");
     }
 }
