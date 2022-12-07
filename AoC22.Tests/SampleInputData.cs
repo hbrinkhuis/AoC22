@@ -17,5 +17,14 @@ internal class SampleInputData : TheoryData<IAoCSolver, string, string, string>
             "157", "70");
         Add(new Day04Solver(), "2-4,6-8\n2-3,4-5\n5-7,7-9\n2-8,3-7\n6-6,4-6\n2-6,4-8", 
             "2", "4");
+        Add(new Day05Solver(), @"    [D]    
+[N] [C]    
+[Z] [M] [P]
+ 1   2   3 
+
+move 1 from 2 to 1
+move 3 from 1 to 3
+move 2 from 2 to 1
+move 1 from 1 to 2", "CMZ", "220");
     }
 }
