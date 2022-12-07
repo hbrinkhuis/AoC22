@@ -31,9 +31,7 @@ public class DayOneSolver : IAoCSolver
     private static IEnumerable<Elve> ParseElves(string[] input)
     {
         var lines = input.ToList();
-        if (input == null || !lines.Any())
-            throw new ArgumentNullException(nameof(input));
-        
+
         var elves = new List<Elve>();
         var currentElve = new Elve();
         foreach (var line in lines)

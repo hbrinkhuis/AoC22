@@ -29,14 +29,6 @@ public class DayOneTests
     }
     
     [Fact]
-    public void DayOneTest_NoInput_ShouldThrowArgumentNullException()
-    {
-         var action = () => _sut.SolvePartOne(Array.Empty<string>());
-
-         action.Should().Throw<ArgumentNullException>();
-    }
-
-    [Fact]
     public void DayOneTest_PartOneSampleInput_ShouldReturnAnswer()
     {
         using var tr = new StringReader(SampleInput);

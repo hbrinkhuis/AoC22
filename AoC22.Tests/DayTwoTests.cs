@@ -18,14 +18,6 @@ C Z";
     }
     
     [Fact]
-    public void DayTwoTest_NoInput_ShouldThrowArgumentNullException()
-    {
-         var action = () => _sut.SolvePartOne(Array.Empty<string>());
-
-         action.Should().Throw<ArgumentNullException>();
-    }
-
-    [Fact]
     public void DayTwoTest_PartOneSampleInput_ShouldReturnAnswer()
     {
         using var tr = new StringReader(SampleInput);
@@ -44,7 +36,7 @@ C Z";
         
         var result = _sut.SolvePartOne(lines);
 
-        result.Should().Be("73211");
+        result.Should().Be("14531");
     }
 
     [Fact]
@@ -55,7 +47,7 @@ C Z";
 
         var result = _sut.SolvePartTwo(lines);
 
-        result.Should().Be("45000");
+        result.Should().Be("12");
     }
     
     [Fact]
@@ -66,6 +58,6 @@ C Z";
 
         var result = _sut.SolvePartTwo(lines);
 
-        result.Should().Be("213958");
+        result.Should().Be("11258");
     }
 }
