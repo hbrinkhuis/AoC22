@@ -16,19 +16,7 @@ public class SolverTests
 
         result.Should().Be(expected);
     }
-    
-    [Theory]
-    [ClassData(typeof(SampleInputData))]
-    public void PartTwoSampleInput_ShouldReturnAnswer(IAoCSolver solver, string input, string _, string expected)
-    {
-        using var tr = new StringReader(input);
-        var lines = tr.GetLinesFromReader();
 
-        var result = solver.SolvePartTwo(lines);
-
-        result.Should().Be(expected);
-    }
-    
     [Theory]
     [ClassData(typeof(FileInputData))]
     public void PartOneFileInput_ShouldReturnAnswer(IAoCSolver solver, string input, string expected, string _)
@@ -40,7 +28,19 @@ public class SolverTests
 
         result.Should().Be(expected);
     }
-    
+
+    [Theory]
+    [ClassData(typeof(SampleInputData))]
+    public void PartTwoSampleInput_ShouldReturnAnswer(IAoCSolver solver, string input, string _, string expected)
+    {
+        using var tr = new StringReader(input);
+        var lines = tr.GetLinesFromReader();
+
+        var result = solver.SolvePartTwo(lines);
+
+        result.Should().Be(expected);
+    }
+
     [Theory]
     [ClassData(typeof(FileInputData))]
     public void PartTwoFileInput_ShouldReturnAnswer(IAoCSolver solver, string input, string _, string expected)

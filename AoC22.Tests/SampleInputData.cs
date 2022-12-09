@@ -25,6 +25,6 @@ internal class SampleInputData : TheoryData<IAoCSolver, string, string, string>
 move 1 from 2 to 1
 move 3 from 1 to 3
 move 2 from 2 to 1
-move 1 from 1 to 2", "CMZ", "220");
+move 1 from 1 to 2", "CMZ", "MCD");
     }
 }
