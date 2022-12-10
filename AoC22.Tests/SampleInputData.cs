@@ -28,15 +28,3 @@ move 2 from 2 to 1
 move 1 from 1 to 2", "CMZ", "MCD");
     }
 }
-
-internal class Day06SampleInputData : TheoryData<IAoCSingleSolver<int>, string, int>
-{
-    public Day06SampleInputData()
-    { 
-        Add(new Day06Solver(), "mjqjpqmgbljsphdztnvjfqwrcgsmlb", 7);
-        Add(new Day06Solver(), "bvwbjplbgvbhsrlpgdmjqwftvncz", 5);
-        Add(new Day06Solver(), "nppdvjthqldpwncqszvftbrmjlhg", 6);
-        Add(new Day06Solver(), "nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10);
-        Add(new Day06Solver(), "zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11);
-    }
-}

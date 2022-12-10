@@ -51,13 +51,4 @@ public class SolverTests
 
         result.Should().Be(expected);
     }
-
-    [Theory]
-    [ClassData(typeof(Day06SampleInputData))]
-    public void Day06Solver_PartOne_SampleInput_ShouldReturnAnswer(IAoCSingleSolver<int> solver, string input, int expected)
-    {
-        var result = solver.SolvePartOne(input);
-        
-        result.Should().Be(expected);
-    }
 }

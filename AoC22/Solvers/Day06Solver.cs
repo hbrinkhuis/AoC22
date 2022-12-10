@@ -37,6 +37,18 @@ public class Day06Solver : IAoCSingleSolver<int>
 
     public int SolvePartTwo(string input)
     {
-        throw new NotImplementedException();
+        for (var i = 13; i < input.Length; i++)
+        {
+            var block = input.AsSpan(i - 13, 14);
+
+            var hasDuplicateCharacter = CheckForDuplicateCharacter(block);
+
+            if (!hasDuplicateCharacter)
+            {
+                return i + 1;
+            }
+        }
+        
+        return int.MaxValue;
     }
 }
