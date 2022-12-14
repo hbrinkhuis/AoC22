@@ -65,6 +65,6 @@ public class Day06SolverTests
         var input = tr.ReadToEnd();
         var result = sut.SolvePartTwo(input);
         
-        result.Should().Be(3570);
+        result.Should().Be(3037);
     }
 }
