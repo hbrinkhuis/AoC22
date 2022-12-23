@@ -4,6 +4,8 @@ namespace AoC22.Tests;
 
 public class Day07SolverTests
 {
+    private readonly Day07Solver _sut;
+
     private const string SampleInput = @"$ cd /
 $ ls
 dir a
@@ -27,17 +29,57 @@ $ ls
 8033020 d.log
 5626152 d.ext
 7214296 k";
-    
+
+    private const string SampleInputExpectedPartOne = "95437";
+    private const string SampleInputExpectedPartTwo = "24933642";
+
+    public Day07SolverTests()
+    {
+        _sut = new Day07Solver();
+    }
+
     [Fact]
     public void PartOneSampleInput_ShouldReturnAnswer()
     {
-        var sut = new Day07Solver();
-        var expected = "95437";
         using var tr = new StringReader(SampleInput);
         var lines = tr.GetLinesFromReader();
 
-        var result = sut.SolvePartOne(lines);
+        var result = _sut.SolvePartOne(lines);
 
-        result.Should().Be(expected);
+        result.Should().Be(SampleInputExpectedPartOne);
     }
+
+    [Fact]
+    public void PartOneFileInput_ShouldReturnAnswer()
+    {
+        using var fr = new StreamReader("./inputs/day07.txt");
+        var lines = fr.GetLinesFromReader();
+
+        var result = _sut.SolvePartOne(lines);
+
+        result.Should().Be("144896");
+    }
+    
+    [Fact]
+    public void PartTwoSampleInput_ShouldReturnAnswer()
+    {
+        using var tr = new StringReader(SampleInput);
+        var lines = tr.GetLinesFromReader();
+
+        var result = _sut.SolvePartTwo(lines);
+
+        result.Should().Be(SampleInputExpectedPartTwo);
+    }
+    
+    [Fact]
+    public void PartTwoFileInput_ShouldReturnAnswer()
+    {
+        using var fr = new StreamReader("./inputs/day07.txt");
+        var lines = fr.GetLinesFromReader();
+
+        var result = _sut.SolvePartTwo(lines);
+
+        result.Should().Be("404395");
+    }
+    
 }

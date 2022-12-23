@@ -8,10 +8,41 @@ public class Day07Solver : IAoCSolver
     {
         var rootDir = ParseStatements(input[1..]); // ignore first line, since it's always 'cd /'
 
-        int sum = 0;
-        var total = CalculateSum(rootDir, ref sum);
+        var sum = 0;
+        var _ = CalculateSum(rootDir, ref sum);
 
         return sum.ToString();
+    }
+
+    public string SolvePartTwo(string[] input)
+    {
+        var rootDir = ParseStatements(input[1..]); // ignore first line, since it's always 'cd /'
+        
+        List<int> directorySizes = new List<int>();
+        var totalSize = GetDirectorySizes(rootDir, ref directorySizes);
+
+        var target = 3e7 - (7e7 - totalSize);
+
+        var result = directorySizes.Where(c => c >= target).Min();
+
+        return result.ToString();
+    }
+
+    private static int GetDirectorySizes(Directory dir, ref List<int> directorySizes)
+    {
+        var currentLevelSum = 0;
+        if (dir.SubDirectories.Any())
+        {
+            foreach (var subDir in dir.SubDirectories)
+            {
+                currentLevelSum += GetDirectorySizes(subDir, ref directorySizes);
+            }
+        }
+
+        currentLevelSum += dir.Files.Sum(c => c.Size);
+        
+        directorySizes.Add(currentLevelSum);
+        return currentLevelSum;
     }
 
     private static int CalculateSum(Directory rootDir, ref int sum)
@@ -49,7 +80,7 @@ public class Day07Solver : IAoCSolver
                     ParseDirectory(arguments, currentDir),
                 { } s when Regex.IsMatch(s, @"^\d+$") =>
                     ParseFile(arguments, currentDir),
-                _ => throw new Exception("Unknown command")
+                _ => throw new Exception("Unknown entry")
             };
         }
 
@@ -80,15 +111,9 @@ public class Day07Solver : IAoCSolver
                     ? currentDir.Parent
                     : currentDir.SubDirectories.Single(c => c.Name == arguments[2]),
             "ls" => currentDir,
-            _ => throw new ArgumentOutOfRangeException()
+            _ => throw new Exception("Unknown command"),
         };
     }
-
-    public string SolvePartTwo(string[] input)
-    {
-        return string.Empty;
-    }
-    
 
     private class Directory
     {
